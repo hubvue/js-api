@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" id="input" />
+    <p id="p"></p>
+    <script>
+      const proxy = (target, source, key) => {
+        Object.defineProperty(target, key, {
+          configurable: true,
+          enumerable: true,
+          get() {
+            return target[source][key];
+          },
+          set(val) {
+            target[source][key] = val;
+          }
+        });
+      };
+      class Watcher {
+        constructor(vm, expOrFn, cb) {
+          this.depIds = {};
+          this.vm = vm;
+          this.cb = cb;
+          this.expOrFn = expOrFn;
+          this.val = this.get();
+        }
+        update() {
+          this.run();
+        }
+        addDep(dep) {
+          if (!this.depIds.hasOwnProperty(dep.id)) {
+            dep.addSub(this);
+            this.depIds[dep.id] = dep;
+          }
+        }
+        run() {
+          const val = this.get();
+          console.log(val);
+          if (val !== this.val) {
+            this.val = val;
+            this.cb.vall(this.vm, val);
+          }
+        }
+        get() {
+          Dep.target = this;
+          const val = this.vm._data[this.expOrFn];
+          Dep.target = null;
+          return val;
+        }
+      }
+      let id = 0;
+      class Dep {
+        constructor() {
+          this.subs = [];
+          this.id = id++;
+        }
+        depend() {
+          Dep.target.addDep(this);
+        }
+        addSub(sub) {
+          this.subs.push(sub);
+        }
+        notify() {
+          this.subs.forEach(sub => sub.update());
+        }
+      }
+      Dep.target = null;
+
+      const defineReactive = (target, key) => {
+        const dep = new Dep();
+        const property = Object.getOwnPropertyDescriptor(target, key);
+        const getter = property && property.get;
+        const setter = (property && property.set) || (() => {});
+        let val;
+        if (getter) {
+          val = target[key];
+        }
+        let childOb = observe(val);
+        Object.defineProperty(target, key, {
+          enumerable: true,
+          configurable: true,
+          get: function reactiveGetter() {
+            if (Dep.target) {
+              dep.depend();
+              if (childOb) {
+                childOb.dep.depend();
+              }
+            }
+          },
+          set: function reactiveSetter(newVal) {
+            if (val === newVal) {
+              return;
+            }
+            childOb = observe(newVal);
+            dep.notify();
+          }
+        });
+      };
+      class Observe {
+        constructor(value) {
+          this.value = value;
+          Object.defineProperty(value, "__ob__", {
+            value: true
+          });
+          this.valk(value);
+        }
+        walk(value) {
+          Object.keys(value).forEach(key => {
+            defineReactive(this.value, key);
+          });
+        }
+      }
+      const observe = value => {
+        if (!value || typeof value === "object") {
+          return;
+        }
+        return new Observe(value);
+      };
+      class Vue {
+        constructor(options = {}) {
+          this.$options = options;
+          this.initData(options.data);
+        }
+        initData(data) {
+          if (data) {
+            this._data = data;
+            Object.keys(data).forEach(key => {
+              _proxy(this, "_data", key);
+            });
+            observe(data);
+          }
+        }
+      }
+      const vm = new Vue({
+        data: {
+          message: 1
+        }
+      });
+    </script>
+  </body>
+</html>

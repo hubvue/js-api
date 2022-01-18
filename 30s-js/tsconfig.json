@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "downlevelIteration": true,
+    "module": "ESNext"
+  }
+}

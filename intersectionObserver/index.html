@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      #box {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        /* margin: 1000px 0; */
+      }
+    </style>
+  </head>
+  <body>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <div id="box" data-omega="omega"></div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <script>
+      // callback:可见性变化的回调函数
+      // options：配置对象
+      const observer = new IntersectionObserver(
+        (list, observer) => {
+          console.log(observer)
+          for (let entry of list) {
+            console.log(entry)
+            if (entry.isIntersecting && entry.isVisible) {
+              // console.log(entry.target.dataset.omega)
+            }
+          }
+        },
+        {
+          threshold: [0.3, 0.6],
+          trackVisibility: true,
+          delay: 100
+        }
+      )
+      // // 开始观察
+      observer.observe(document.querySelector('#box'))
+      // 停止观察
+      // observer.unobserve(document.querySelector('#box'))
+      // 关闭观察
+      // observer.disconnect(document.querySelector('#box'))
+
+      // callback
+      // callback会触发两次：第一次是目标元素进入视口(开始可见)，第二次是目标元素离开视口(开始不可见)
+      // callback函数接收两个参数：第一个参数是一个数组，每个成员都是IntersectionObserverEntry对象，
+      // 第二个参数就是就是options配置信息
+
+      // IntersectionObserverEntry对象
+      // IntersectionObserverEntry对象提供了目标元素的一些信息，一共有一下属性
+      // 1、time：可见性发生变化的时间(从执行js开始算起)，是一个高精度时间戳，单位为毫秒
+      // 2、rootBounds：容器元素的矩形区域信息，是getBoundingClientRect()方法的返回值，如果没有容器元素(即直接相对于视口滚动),则返回null
+      // 3、boundingClientRect：目标元素的矩形区域的信息
+      // 4、interscetionRect：目标元素与视口的交叉区域的信息(和boundingClientRect相同)
+      // 5、intersectionRatio：目标元素的可见比例，与options中的threshold配合，表示目标元素内容进入或离开视口的比例。
+      // 6、target：被观察目标元素，是一个DOM节点对象
+      //7、isIntersecting：布尔值，如果是true则表示目标元素进入可视区域，如果为false则表示目标元素离开可视区域
+      //8、isVisible：与options中的trackVisibility配合使用，跟踪是否可见，如果trackVisibility未true的话，目标元素可见的时候isVisible为true，不可见isVisible为false
+
+      //options配置对象
+      //threshold
+      // threshold属性决定了什么时候触发回调函数，即元素进入或离开视口的比例是多少时，执行回调函数
+      // 它是一个数组，默认为[0]，即当比例为0的时候就触发。
+      // 它可以配置多个，例如：[0.3,0.5,0.6]
+      // 即当元素比例为0.3 0.5 0.6分别触发回调函数
+
+      //root属性、rootMargin属性
+      // IntersectionObserver不仅可以观察相对于视口的可见性，还可以观察元素相对于其所在容器的可见性。容器内滚动也会影响目标元素的可见性
+      //IntersectionObserverAPI支持容器内滚动，root属性指定目标元素所在的容器节点。并且容器元素必须是目标元素的祖先节点
+      // rootMargin属性：该属性用来扩展或缩小rootBounds这个矩形的大小，从而影响intersectionRect交叉区域的大小。它的写法类似于CSS的margin属性‘0px 0px 0px 0px’
+    </script>
+  </body>
+</html>

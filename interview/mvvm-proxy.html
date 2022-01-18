@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" id="input" />
+    <p id="p"></p>
+    <script>
+      const input = document.querySelector("#input");
+      const p = document.querySelector("#p");
+      let obj = {};
+      const proxy = new Proxy(obj, {
+        get(target, key, receiver) {
+          console.log(`getter ${target}`);
+          return Reflect.get(target, key, receiver);
+        },
+        set(target, key, value, receiver) {
+          if (key === "value") {
+            input.value = value;
+            p.innerHTML = value;
+          }
+          return Reflect.set(target, key, value, receiver);
+        }
+      });
+      input.addEventListener("input", e => {
+        proxy.value = e.target.value;
+      });
+    </script>
+  </body>
+</html>

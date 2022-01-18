@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+
+    <script>
+        class DrawBall {
+            constructor() {
+                this.canvas = document.querySelector("#canvas");
+                this.set = new Set();
+            }
+            init() {
+                this.ctx = this.canvas.getContext('2d');
+                this.canvasW = this.canvas.width;
+                this.canvasH = this.canvas.height;
+                this.cxt.fillStyle="#FF0000";
+                this.draw();
+            }
+            draw() {
+                while(this.set.size() <= 100) {
+                    let x = Math.floor(Math.random() * this.canvasW);
+                    let y = Math.floor(Math.random() * this.canvasH);
+                    let r = Math.floor(Math.random() * 10 + 5);
+                    if(this.isDraw(x, y, r)) {
+                        this.cxt.beginPath();
+                        this.cxt.arc(70,18,15,0,Math.PI*2,true);
+                        this.cxt.closePath();
+                        this.cxt.fill(x, y, r, 0,Math.PI*2,true);
+                        this.set.add(`${x}-${y}-${z}`);
+                    }
+                }
+            }
+            isDraw(x1, y1, r1) {
+                let set = this.set, w = this.canvasW, y = this.canvasH;
+                for(let point of set.values()) {
+                    let [x1, y1,r1] = point.split('-');
+                    if(Math.pow((Math.pow((x1 - x2), 2), Math.pow((y1 - y2), 2)),0.5) > r1 + r2) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+        }
+
+        const drawBall = new DrawBall();
+        drawBall.init();
+    </script>
+</body>
+</html>

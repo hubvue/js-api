@@ -1,0 +1,33 @@
+lockfileVersion: 5.3
+
+specifiers:
+  '@types/lodash': ^4.14.171
+  lodash: ^4.17.21
+  typescript: ^4.3.5
+
+dependencies:
+  '@types/lodash': artifactory.intra.xiaojukeji.com/@types/lodash/4.14.171
+  lodash: artifactory.intra.xiaojukeji.com/lodash/4.17.21
+  typescript: artifactory.intra.xiaojukeji.com/typescript/4.3.5
+
+packages:
+
+  artifactory.intra.xiaojukeji.com/@types/lodash/4.14.171:
+    resolution: {integrity: sha1-8Bs6X+NJnjS2IsNipGpgn9sjVzs=, registry: http://npm.intra.xiaojukeji.com/, tarball: http://artifactory.intra.xiaojukeji.com:80/artifactory/api/npm/npm/@types/lodash/-/lodash-4.14.171.tgz?dl=https%3A%2F%2Frepo.huaweicloud.com%2Frepository%2Fnpm%2F%40types%2Flodash%2F-%2Flodash-4.14.171.tgz}
+    name: '@types/lodash'
+    version: 4.14.171
+    dev: false
+
+  artifactory.intra.xiaojukeji.com/lodash/4.17.21:
+    resolution: {integrity: sha1-Z5WRxWTDv/quhFTPCz3zcMPWkRw=, registry: http://npm.intra.xiaojukeji.com/, tarball: http://artifactory.intra.xiaojukeji.com/artifactory/api/npm/npm/lodash/-/lodash-4.17.21.tgz?dl=https%3A%2F%2Frepo.huaweicloud.com%2Frepository%2Fnpm%2Flodash%2F-%2Flodash-4.17.21.tgz}
+    name: lodash
+    version: 4.17.21
+    dev: false
+
+  artifactory.intra.xiaojukeji.com/typescript/4.3.5:
+    resolution: {integrity: sha1-TRw3zBbok5c8RaBohrcRMjTxGfQ=, registry: http://npm.intra.xiaojukeji.com/, tarball: http://artifactory.intra.xiaojukeji.com/artifactory/api/npm/npm/typescript/-/typescript-4.3.5.tgz?dl=https%3A%2F%2Frepo.huaweicloud.com%2Frepository%2Fnpm%2Ftypescript%2F-%2Ftypescript-4.3.5.tgz}
+    name: typescript
+    version: 4.3.5
+    engines: {node: '>=4.2.0'}
+    hasBin: true
+    dev: false

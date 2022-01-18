@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "outDir": "lib",
+    "target": "ESNext",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "removeComments": false,
+    "preserveConstEnums": true,
+    "declaration": false,
+    "noEmitOnError": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": false,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "typeRoots": ["node_modules/@types"],
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "esModuleInterop": true
+  },
+  "include": ["src"]
+}

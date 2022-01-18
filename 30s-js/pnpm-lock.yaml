@@ -1,0 +1,17 @@
+lockfileVersion: 5.3
+
+specifiers:
+  typescript: ^4.5.4
+
+dependencies:
+  typescript: artifactory.intra.xiaojukeji.com/typescript/4.5.4
+
+packages:
+
+  artifactory.intra.xiaojukeji.com/typescript/4.5.4:
+    resolution: {integrity: sha1-oX06AmO/XIcjucUvQ8UITt8Twug=, registry: http://npm.intra.xiaojukeji.com/, tarball: http://artifactory.intra.xiaojukeji.com/artifactory/api/npm/npm/typescript/download/typescript-4.5.4.tgz?dl=https%3A%2F%2Fregistry.npmmirror.com%2Ftypescript%2Fdownload%2Ftypescript-4.5.4.tgz}
+    name: typescript
+    version: 4.5.4
+    engines: {node: '>=4.2.0'}
+    hasBin: true
+    dev: false
