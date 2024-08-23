@@ -14,7 +14,7 @@ const deepClone = (target, num , map = new WeakMap(), level = 0) => {
   map.set(target, t);
   for(let key in target) {
     if(target.hasOwnProperty(key)) {
-      t[key] = deepClone(target[key], map,level + 1);
+      t[key] = deepClone(target[key], map, level + 1);
     }
   }
   return t;
